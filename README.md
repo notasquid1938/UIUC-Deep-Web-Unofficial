@@ -2,6 +2,8 @@
 
 This is the repo for UIUC's Unofficial Dark Web page, intended for hosting on TOR.
 
+uiuc2vjgvhjqbbuo37ckym4atsejqxxbr4lgacpmxbmnz2ka6wjeqdyd.onion
+
 First, run the development server:
 
 ```bash
