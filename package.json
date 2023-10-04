@@ -5,11 +5,12 @@
   "scripts": {
     "dev": "next dev -p 80",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 80",
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "13.4.19",
+    "mongodb": "^6.1.0",
+    "next": "13.4.11",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },

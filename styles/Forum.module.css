@@ -1,0 +1,21 @@
+.Title {
+    text-align: center;
+    color: #a5a5a5;
+  }
+  
+  .Posts {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .Post {
+    border: 1px solid #ccc;
+    color: #ff5f05;
+    padding: 10px;
+    margin: 10px; 
+  }
+
+  .PostContent {
+    text-align: left;
+  }
+  

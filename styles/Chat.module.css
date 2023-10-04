@@ -1,0 +1,75 @@
+/* styles/Chat.module.css */
+
+/* Title Styles */
+.Title {
+    text-align: center;
+    color: #a5a5a5;
+  }
+  
+  .Title h1 {
+    font-size: 24px;
+  }
+  
+  .Title p {
+    font-size: 14px;
+    color: #a5a5a5;
+  }
+    .Messages {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .Messages ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .Messages li {
+    background-color: #191919;
+    border: 1px solid #ccc;
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+  
+  .Submit {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .Submit input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .Submit button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .Submit button:hover {
+    background-color: #0056b3;
+  }
+
+  .Timestamp {
+    color: lightblue;
+    font-size: 75%;
+  }
+  
+  .messageUsername {
+    color: orange;
+  }

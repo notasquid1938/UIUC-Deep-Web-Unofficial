@@ -1,11 +1,11 @@
 import React from 'react';
-import styles from '../styles/banner.module.css';
+import styles from '../styles/Banner.module.css';
 
 function Banner() {
   return (
     <div className={styles.banner}>
-      <h1>Welcome to My Website</h1>
-      <p>Insert Clever Slogan</p>
+      <h1>UIUC Deep Web</h1>
+      <p>Established 2019</p>
     </div>
   );
 }
