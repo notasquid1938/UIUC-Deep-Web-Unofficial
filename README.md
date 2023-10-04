@@ -8,7 +8,7 @@ uiuc2vjgvhjqbbuo37ckym4atsejqxxbr4lgacpmxbmnz2ka6wjeqdyd.onion
 
 Uses MongoDB to store forum posts, replies, and live chat messages. Yes, this could probably be done better using an SQL database, but I'm very familiar with Mongo so it'll have to do. I invite anyone to rewrite all of this for an SQL database, preferably using Postgres, if you are so inclined.
 
-##Self-Hosting Instructions
+## Self-Hosting Instructions
 
 1. Install MongoDB and set up a database called "UIUC-Tor" with two collections: "Messages" and "Posts"
 2. Donwload Tor if you haven't already done so and edit your torrc file to add these two lines:
