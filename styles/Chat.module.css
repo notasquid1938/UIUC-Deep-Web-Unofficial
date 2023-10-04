@@ -15,8 +15,8 @@
     color: #a5a5a5;
   }
     .Messages {
-    max-height: 400px;
     overflow-y: auto;
+    max-height: 60vh;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -49,6 +49,7 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
+    width: 70%;
   }
   
   .Submit button {

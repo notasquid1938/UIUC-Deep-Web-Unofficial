@@ -4,18 +4,106 @@
   }
   
   .Posts {
-    margin-top: 20px;
     text-align: center;
   }
   
   .Post {
-    border: 1px solid #ccc;
+    border: 1px solid #7f7f7f;
     color: #ff5f05;
-    padding: 10px;
-    margin: 10px; 
+    padding-bottom: 10px;
+    margin: 5px; 
   }
 
   .PostContent {
     text-align: left;
+    padding-left: 10px;
+    padding-right: 10px;
   }
   
+  .Form {
+    text-align-last: center;
+    color: #ccc;
+  }
+
+  .titleBox {
+    inline-size: -webkit-fill-available;
+    text-align-last: start;
+  }
+
+  .contentBox {
+    inline-size: -webkit-fill-available;
+    text-align-last: start;
+  }
+
+.forumBottom {
+  display: flex; 
+  align-items: center; 
+  justify-content: flex-start; 
+}
+
+.Upvote, .Downvote {
+  margin-right: 5px; 
+  padding: 5px 10px; 
+  border: none; 
+  color: #fff; 
+  cursor: pointer;
+}
+
+.Upvote {
+  background-color: #048000; 
+  margin-left: 10px;
+}
+
+.Downvote {
+  background-color: #a20000; 
+}
+
+.upvoteNumber {
+  margin-right: 5px;
+}
+
+.PostUsernameContainer {
+  text-align: left;
+}
+
+.PostUsername {
+  display: inline-block;
+  padding: 7px;
+  background-color: #4b4b4b;
+  border-radius: 20px;
+  margin-left: 5px;
+}
+
+.RepliesContainer {
+  border: 1px solid #7f7f7f;
+  color: #ff5f05;
+  margin-left: 40px;
+}
+
+.ReplyForm {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.ReplyForm textarea {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical; 
+}
+
+.ReplyForm button {
+  width: 100%;
+  margin-top: 10px;
+  max-width: fit-content;
+  padding: 10px;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  align-self: center;
+}

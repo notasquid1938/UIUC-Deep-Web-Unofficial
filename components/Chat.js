@@ -12,7 +12,6 @@ function Chat() {
       const response = await fetch('/api/messages');
       const data = await response.json();
       setMessages(data);
-      scrollToBottom(); // Scroll to the bottom when new messages arrive
     } catch (error) {
       console.error('Error fetching messages:', error);
     }
@@ -25,12 +24,14 @@ function Chat() {
   };
 
   useEffect(() => {
-    const intervalId = setInterval(fetchMessages, 1000);
-
-    return () => {
-      clearInterval(intervalId);
-    };
+    // Fetch messages when the component first mounts
+    fetchMessages();
   }, []);
+
+  useEffect(() => {
+    // Scroll to the bottom when messages are updated
+    scrollToBottom();
+  }, [messages]);
 
   useEffect(() => {
     // Retrieve the username from local storage
@@ -38,6 +39,18 @@ function Chat() {
     if (storedUsername) {
       setUsername(storedUsername);
     }
+  }, []);
+
+  useEffect(() => {
+    // Update messages every 500ms
+    const interval = setInterval(() => {
+      fetchMessages();
+    }, 500);
+
+    return () => {
+      // Clear the interval when the component unmounts
+      clearInterval(interval);
+    };
   }, []);
 
   const handleSubmit = async (e) => {
@@ -57,7 +70,6 @@ function Chat() {
       const data = await response.json();
       setMessages([...messages, data]);
       setNewMessage('');
-      scrollToBottom(); // Scroll to the bottom when a new message is sent
     } catch (error) {
       console.error('Error sending message:', error);
     }

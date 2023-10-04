@@ -4,6 +4,7 @@ import Forum from '../components/Forum';
 import Chat from '../components/Chat';
 import  {Username} from '../components/Username';
 import styles from '../styles/Index.module.css';
+import UsersOnline from '../components/OnlineUsersCounter';
 
 function HomePage() {
   return (
