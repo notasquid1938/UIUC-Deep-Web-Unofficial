@@ -98,7 +98,7 @@ function Chat() {
         </ul>
       </div>
       <div className={styles.Submit}>
-        <form onSubmit={handleSubmit}>
+        <form className= {styles.submitForm} onSubmit={handleSubmit}>
           <input
             type="text"
             placeholder="Type your message"

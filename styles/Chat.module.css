@@ -46,7 +46,7 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
-    width: 70%;
+    width: 80%;
   }
   
   .Submit button {
@@ -70,4 +70,8 @@
   
   .messageUsername {
     color: orange;
+  }
+
+  .submitForm {
+    width: 100%;
   }
