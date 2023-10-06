@@ -162,10 +162,9 @@ function Forum() {
       <div className={styles.Posts}>
       {posts.map((post) => (
         <div key={post._id}>
-          {/* First Forum Post */}
           <div className={styles.Post}>
             <div className={styles.PostUsernameContainer}>
-              <p className={styles.PostUsername}>User: {post.username}</p>
+              <p className={styles.PostUsername}>{post.username}</p>
             </div>
             <h3 className={styles.PostTitle}>{post.title}</h3>
             <p className={styles.PostContent}>{post.content}</p>
@@ -196,7 +195,7 @@ function Forum() {
             </div>
           </div>
           <div className={styles.RepliesContainer}>
-            {post.replies.map((reply) => (
+            {post.replies && post.replies.map((reply) => (
               <div className={styles.Reply} key={reply._id}>
                 <p className={styles.PostUsername}>{reply.username}</p>
                 <p className={styles.PostContent}>{reply.text}</p>
