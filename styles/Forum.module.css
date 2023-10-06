@@ -94,6 +94,8 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   resize: vertical; 
+  color: #efefef;
+  background-color: #4b4b4b;
 }
 
 .ReplyForm button {
@@ -101,9 +103,10 @@
   margin-top: 10px;
   max-width: fit-content;
   padding: 10px;
-  color: #fff;
+  color: #efefef;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   align-self: center;
+  background-color: #333333;
 }
