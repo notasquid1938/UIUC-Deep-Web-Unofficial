@@ -24,31 +24,19 @@ function Chat() {
   };
 
   useEffect(() => {
-    // Fetch messages when the component first mounts
-    fetchMessages();
-  }, []);
-
-  useEffect(() => {
-    // Scroll to the bottom when messages are updated
-    scrollToBottom();
-  }, [messages]);
-
-  useEffect(() => {
-    // Retrieve the username from local storage
     const storedUsername = localStorage.getItem('generatedUsername');
     if (storedUsername) {
       setUsername(storedUsername);
     }
+    fetchMessages().then(() => scrollToBottom()); //Waits until messages are loaded to scroll to bottom
   }, []);
 
   useEffect(() => {
-    // Update messages every 500ms
     const interval = setInterval(() => {
       fetchMessages();
     }, 500);
 
     return () => {
-      // Clear the interval when the component unmounts
       clearInterval(interval);
     };
   }, []);
