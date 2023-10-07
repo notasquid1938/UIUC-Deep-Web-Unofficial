@@ -1,14 +1,26 @@
-import { useEffect, useState } from 'react';
-import io from 'socket.io-client';
+import React, { useState, useEffect } from 'react';
 
-const OnlineUsers = () => {
-  const [onlineUsers, setOnlineUsers] = useState(0);
+function OnlineUsers() {
 
   useEffect(() => {
-
+    const username = localStorage.getItem('generatedUsername');
+    
+    const sendNewUserMessage = async () => {
+      try {
+        const response = await fetch('/api/usercount', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ message: 'NEW USER', username }),
+        });
+        console.log('User Joined:', username);
+      } catch (error) {
+        console.error('Error sending "NEW USER" message:', error);
+      }
+    };
+    sendNewUserMessage()
   }, []);
-
-  return <div>Online Users: {onlineUsers}</div>;
-};
+}
 
 export default OnlineUsers;
