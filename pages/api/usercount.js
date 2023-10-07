@@ -9,14 +9,14 @@ function markUserAsOffline(username) {
 function checkAndMarkUsersOffline() {
   const currentTime = Date.now();
   onlineUsers.forEach((lastActiveTime, username) => {
-    if (currentTime - lastActiveTime > 8000) {
+    if (currentTime - lastActiveTime > 3000) {
       markUserAsOffline(username);
     }
   });
 }
 
 // Set up a timer to run the checkAndMarkUsersOffline function every 8 seconds
-setInterval(checkAndMarkUsersOffline, 8000);
+setInterval(checkAndMarkUsersOffline, 3000);
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
@@ -35,7 +35,6 @@ export default async function handler(req, res) {
     } else if (message === 'STILL ONLINE') {
       if (onlineUsers.has(username)) {
         onlineUsers.set(username, Date.now());
-        console.log(`${username} is still online.`);
         res.status(200).json({ message: 'User is still online' });
       } else {
         res.status(404).json({ message: 'User not found' });
