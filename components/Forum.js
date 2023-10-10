@@ -30,16 +30,25 @@ function Forum() {
     fetch('/api/posts')
       .then((response) => response.json())
       .then((data) => {
-        const postsData = data.filter((item) => item.type !== 'reply');
-        const repliesData = data.filter((item) => item.type === 'reply');
+        // Sort the posts from newest to oldest based on timestamp
+        const sortedPosts = data
+          .filter((item) => item.type !== 'reply')
+          .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+        // Sort replies for each post from newest to oldest
+        const sortedReplies = data
+          .filter((item) => item.type === 'reply')
+          .sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+
         const repliesMap = {};
-        repliesData.forEach((reply) => {
+        sortedReplies.forEach((reply) => {
           if (!repliesMap[reply.postId]) {
             repliesMap[reply.postId] = [];
           }
           repliesMap[reply.postId].push(reply);
         });
-        const updatedPosts = postsData.map((post) => {
+
+        const updatedPosts = sortedPosts.map((post) => {
           if (repliesMap[post._id]) {
             post.replies = repliesMap[post._id];
           } else {
