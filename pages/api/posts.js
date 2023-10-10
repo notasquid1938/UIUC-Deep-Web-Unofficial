@@ -7,13 +7,14 @@ export default async function handler(req, res) {
     const collection = db.collection('Posts');
 
     if (req.method === 'POST') {
-      const { title, content, username } = req.body;
+      const { title, content, username, timestamp } = req.body; // Include the timestamp
       const result = await collection.insertOne({
         username,
         title,
         content,
         upvotes: 0,
         downvotes: 0,
+        timestamp, // Include the timestamp
       });
       res.status(201).json(result.ops[0]);
     } else if (req.method === 'GET') {
@@ -36,14 +37,15 @@ export default async function handler(req, res) {
       );
       res.status(200).json(updatedPost.value);
     } else if (req.method === 'OPTIONS') {
-        const { type, username, postId, text } = req.body;
-        const result = await collection.insertOne({
-          type,
-          username,
-          postId,
-          text,
-        });
-        res.status(201).json(result.ops[0]);
+      const { type, username, postId, text, timestamp } = req.body; // Include the timestamp
+      const result = await collection.insertOne({
+        type,
+        username,
+        postId,
+        text,
+        timestamp, // Include the timestamp
+      });
+      res.status(201).json(result.ops[0]);
     } else {
       res.status(405).json({ error: 'Method Not Allowed' });
     }

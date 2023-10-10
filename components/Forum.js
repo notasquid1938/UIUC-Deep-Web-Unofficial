@@ -21,10 +21,10 @@ function Forum() {
   const handleShowReplyBox = (postId) => {
     setShowReplyBox({ ...showReplyBox, [postId]: true });
   };
-  
+
   const handleHideReplyBox = (postId) => {
     setShowReplyBox({ ...showReplyBox, [postId]: false });
-  }; 
+  };
 
   useEffect(() => {
     fetch('/api/posts')
@@ -64,7 +64,7 @@ function Forum() {
     setVotingCooldown(true);
     setTimeout(() => {
       setVotingCooldown(false);
-    }, 2000); 
+    }, 2000);
 
     fetch('/api/posts', {
       method: 'PUT',
@@ -85,12 +85,13 @@ function Forum() {
 
   const handlePostSubmit = (e) => {
     e.preventDefault();
+    const currentTime = new Date().toISOString(); // Get the current timestamp
     fetch('/api/posts', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ title, content, username}),
+      body: JSON.stringify({ title, content, username, timestamp: currentTime }), // Include the timestamp
     })
       .then((response) => response.json())
       .then((data) => {
@@ -98,18 +99,25 @@ function Forum() {
         setShowPostForm(false);
         setTitle('');
         setContent('');
-        setUsername('')
+        setUsername('');
       })
       .catch((error) => console.error('Error posting:', error));
   };
 
   const handleReplySubmit = (postId) => {
+    const currentTime = new Date().toISOString(); // Get the current timestamp
     fetch('/api/posts', {
       method: 'OPTIONS',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ type: "reply", username, postId, text: replyText }),
+      body: JSON.stringify({
+        type: "reply",
+        username,
+        postId,
+        text: replyText,
+        timestamp: currentTime, // Include the timestamp
+      }),
     })
       .then((response) => response.json())
       .then((updatedPost) => {
@@ -121,7 +129,7 @@ function Forum() {
         setReplyText('');
       })
       .catch((error) => console.error('Error replying:', error));
-  }; 
+  };
 
   return (
     <div>
@@ -160,50 +168,52 @@ function Forum() {
         </form>
       )}
       <div className={styles.Posts}>
-      {posts.map((post) => (
-        <div key={post._id}>
-          <div className={styles.Post}>
-            <div className={styles.PostUsernameContainer}>
-              <p className={styles.PostUsername}>{post.username}</p>
-            </div>
-            <h3 className={styles.PostTitle}>{post.title}</h3>
-            <p className={styles.PostContent}>{post.content}</p>
-            <div className={styles.forumBottom}>
-              <button className={styles.Upvote} onClick={() => handleVote(post._id, 'upvote')}>
-                Upvote
-              </button>
-              <span className={styles.upvoteNumber}>{post.upvotes}</span>
-              <button className={styles.Downvote} onClick={() => handleVote(post._id, 'downvote')}>
-                Downvote
-              </button>
-              <span>{post.downvotes}</span>
-            </div>
-            <div>
-              {!showReplyBox[post._id] && (
-                <button onClick={() => handleShowReplyBox(post._id)}>Reply</button>
-              )}
-              {showReplyBox[post._id] && (
-                <div className={styles.ReplyForm}>
-                  <textarea
-                    value={replyText}
-                    onChange={(e) => setReplyText(e.target.value)}
-                  />
-                  <button onClick={() => handleReplySubmit(post._id)}>Submit Reply</button>
-                  <button onClick={() => handleHideReplyBox(post._id)}>Cancel</button>
-                </div>
-              )}
-            </div>
-          </div>
-          <div className={styles.RepliesContainer}>
-            {post.replies && post.replies.map((reply) => (
-              <div className={styles.Reply} key={reply._id}>
-                <p className={styles.PostUsername}>{reply.username}</p>
-                <p className={styles.PostContent}>{reply.text}</p>
+        {posts.map((post) => (
+          <div key={post._id}>
+            <div className={styles.Post}>
+              <div className={styles.PostUsernameContainer}>
+                <p className={styles.PostUsername}>{post.username}</p>
               </div>
-            ))}
+              <h3 className={styles.PostTitle}>{post.title}</h3>
+              <p className={styles.PostContent}>{post.content}</p>
+              <p className={styles.PostTimestamp}>Posted at: {new Date(post.timestamp).toLocaleString()}</p> {/* Display the timestamp */}
+              <div className={styles.forumBottom}>
+                <button className={styles.Upvote} onClick={() => handleVote(post._id, 'upvote')}>
+                  Upvote
+                </button>
+                <span className={styles.upvoteNumber}>{post.upvotes}</span>
+                <button className={styles.Downvote} onClick={() => handleVote(post._id, 'downvote')}>
+                  Downvote
+                </button>
+                <span>{post.downvotes}</span>
+              </div>
+              <div>
+                {!showReplyBox[post._id] && (
+                  <button onClick={() => handleShowReplyBox(post._id)}>Reply</button>
+                )}
+                {showReplyBox[post._id] && (
+                  <div className={styles.ReplyForm}>
+                    <textarea
+                      value={replyText}
+                      onChange={(e) => setReplyText(e.target.value)}
+                    />
+                    <button onClick={() => handleReplySubmit(post._id)}>Submit Reply</button>
+                    <button onClick={() => handleHideReplyBox(post._id)}>Cancel</button>
+                  </div>
+                )}
+              </div>
+            </div>
+            <div className={styles.RepliesContainer}>
+              {post.replies && post.replies.map((reply) => (
+                <div className={styles.Reply} key={reply._id}>
+                  <p className={styles.PostUsername}>{reply.username}</p>
+                  <p className={styles.PostContent}>{reply.text}</p>
+                  <p className={styles.PostTimestamp}>Replied at: {new Date(reply.timestamp).toLocaleString()}</p> {/* Display the timestamp */}
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
       </div>
     </div>
   );

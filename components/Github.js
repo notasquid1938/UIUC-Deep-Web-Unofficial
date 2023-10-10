@@ -6,7 +6,7 @@ const GitHubButton = () => {
     <div className={styles.container}>
         <Link legacyBehavior href="https://github.com/notasquid1938/UIUC-Deep-Web-Unofficial">
         <a target="_blank" rel="noopener noreferrer" className={styles.githubButton}>
-            Visit GitHub Repository
+            <p1>GitHub Repository</p1>
         </a>
         </Link>
     </div>

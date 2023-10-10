@@ -1,10 +1,10 @@
 .githubButton {
     display: flex;
-    padding: 8px 16px; /* Adjust padding to make it smaller or larger */
-    background-color: #4CAF50; /* Green color */
-    color: #fff; /* White text color */
+    padding: 8px 16px; 
+    background-color: #007804; 
+    color: #ffffff; 
     border: none;
-    border-radius: 20px; /* Adjust the border-radius to control the roundness */
+    border-radius: 20px; 
     text-decoration: none;
     cursor: pointer;
     max-width: fit-content;
@@ -12,9 +12,10 @@
   }
 
   .githubButton:hover {
-    background-color: #45a049; /* Darker green color on hover */
+    background-color: #255828; 
   }
 
   .container {
     text-align: -moz-right;
+    text-align: -webkit-right;
   }

@@ -12,6 +12,7 @@
     color: #ff5f05;
     padding-bottom: 10px;
     margin: 5px; 
+    border-radius: 10px;
   }
 
   .PostContent {
@@ -75,7 +76,6 @@
 }
 
 .RepliesContainer {
-  border: 1px solid #7f7f7f;
   color: #ff5f05;
   margin-left: 40px;
 }
@@ -109,4 +109,10 @@
   cursor: pointer;
   align-self: center;
   background-color: #333333;
+}
+
+.Reply {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
