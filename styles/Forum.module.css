@@ -5,6 +5,10 @@
   
   .Posts {
     text-align: center;
+    overflow-y: auto;
+    max-height: 120vh;
+    border: 1px solid #7f7f7f;
+    border-radius: 5px;
   }
   
   .Post {
@@ -32,9 +36,10 @@
   }
 
   .contentBox {
-    inline-size: -webkit-fill-available;
-    text-align-last: start;
-  }
+    resize: none; /* Prevent resizing */
+    overflow: auto; /* Enable scrolling */
+    max-height: 300px; /* Set a maximum height to limit the box size and enable scrolling */
+  }  
 
 .forumBottom {
   display: flex; 

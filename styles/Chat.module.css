@@ -8,7 +8,7 @@
   }
     .Messages {
     overflow-y: auto;
-    max-height: 60vh;
+    max-height: 65vh;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;

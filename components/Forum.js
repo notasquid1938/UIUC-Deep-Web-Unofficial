@@ -197,20 +197,22 @@ function Forum() {
                 <span>{post.downvotes}</span>
               </div>
               <div>
-                {!showReplyBox[post._id] && (
-                  <button onClick={() => handleShowReplyBox(post._id)}>Reply</button>
-                )}
-                {showReplyBox[post._id] && (
-                  <div className={styles.ReplyForm}>
-                    <textarea
+              {!showReplyBox[post._id] && (
+                <button onClick={() => handleShowReplyBox(post._id)}>Reply</button>
+              )}
+              {showReplyBox[post._id] && (
+                <div className={styles.ReplyForm}>
+                  <div className="contentBox">
+                    <textarea 
                       value={replyText}
                       onChange={(e) => setReplyText(e.target.value)}
                     />
-                    <button onClick={() => handleReplySubmit(post._id)}>Submit Reply</button>
-                    <button onClick={() => handleHideReplyBox(post._id)}>Cancel</button>
                   </div>
-                )}
-              </div>
+                  <button onClick={() => handleReplySubmit(post._id)}>Submit Reply</button>
+                  <button onClick={() => handleHideReplyBox(post._id)}>Cancel</button>
+                </div>
+              )}
+            </div>
             </div>
             <div className={styles.RepliesContainer}>
               {post.replies && post.replies.map((reply) => (
