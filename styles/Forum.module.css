@@ -9,6 +9,8 @@
     max-height: 120vh;
     border: 1px solid #7f7f7f;
     border-radius: 5px;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
   }
   
   .Post {
