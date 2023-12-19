@@ -28,7 +28,7 @@ function Chat() {
     if (storedUsername) {
       setUsername(storedUsername);
     }
-    fetchMessages().then(() => scrollToBottom()); //Waits until messages are loaded to scroll to bottom
+    fetchMessages().then(() => scrollToBottom());
   }, []);
 
   useEffect(() => {
