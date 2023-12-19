@@ -14,11 +14,15 @@ Uses MongoDB to store forum posts, replies, and live chat messages. Yes, this co
 
 1. Install MongoDB and set up a database called "UIUC-Tor" with two collections: "Messages" and "Posts"
 2. Donwload Tor if you haven't already done so and edit your torrc file to add these two lines:
+```
    HiddenServiceDir C:\Users\yourwebsitefolder
+```
+```
    HiddenServicePort 80 127.0.0.1:80
-3. Make sure Tor is running as a service 
-4. When you restart your server or Tor services the folder you set as the HiddensServiceDir should now have some new stuff in it including a hostname (your onion link) and two encryption files proving you own this onion link
-5. Clone the github repo into your HiddenServiceDir
-6. Install NodeJS and run npm install to get all the modules needed for the website
-7. Finally, run "npm run dev" and the website should now be visible in your localhost:80 or by going to your hostname in Tor
-8. Celebrate!
+```
+4. Make sure Tor is running as a service 
+5. When you restart your server or Tor services the folder you set as the HiddensServiceDir should now have some new stuff in it including a hostname (your onion link) and two encryption files proving you own this onion link
+6. Clone the github repo into your HiddenServiceDir
+7. Install NodeJS and run npm install to get all the modules needed for the website
+8. Finally, run "npm run dev" and the website should now be visible in your localhost:80 or by going to your hostname in Tor
+9. Celebrate!
